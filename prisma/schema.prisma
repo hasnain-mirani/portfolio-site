@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite" // change to "postgresql" if you want
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  blurb     String
+  image     String                 // cover image
+  tags      Json                   // ["Next.js","Stripe"]
+  images    Json?                  // gallery: ["https://...", "/public/..."]
+  live      String?
+  repo      String?
+  year      Int?
+  featured  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
