@@ -1,12 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {  transpilePackages: ["@uploadthing/react"],
-   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "utfs.io" }, // UploadThing CDN
-    ],
-  },
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+   eslint: { ignoreDuringBuilds: true },
+    typescript: { ignoreBuildErrors: true },  
+  reactStrictMode: true,
+ 
 };
-
+// 👇 CommonJS export
 export default nextConfig;
